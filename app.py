@@ -219,8 +219,8 @@ CATALOG: List[Product] = [
         access="Private",
         price_monthly=5000.0,
         features=[
-            "Unlimited or negotiated API usage",
-            "Bulk exports to S3 with pre-signed download URLs",
+            "No-Copy access using snowflake",
+            "Bulk exports using shared snowflake schema",
             "Best for external data delivery and resellers",
             "Dedicated support / SLA (demo placeholder)",
         ],
