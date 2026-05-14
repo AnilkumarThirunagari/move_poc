@@ -203,30 +203,10 @@ CATALOG: List[Product] = [
             "Best for external data delivery and resellers",
             "Dedicated support / SLA (demo placeholder)",
         ],
-        tags=["Bulk Export","REST", "S3", "Enterprise"],
+        tags=["Bulk Export", "S3", "Enterprise"],
         endpoints=[
             {"name": "Export listings", "method": "GET", "path": f"{API_VERSION_PREFIX}/listings/export"},
             {"name": "Get listing by id", "method": "GET", "path": f"{API_VERSION_PREFIX}/listings/{{listing_id}}"},
-        ],
-    ),
-   
-    Product(
-        id="re-listings-enterprise",
-        name="Real Estate Listings API - Enterprise",
-        description="Snowflake Bulk export + partner access for large-scale integrations and pipelines.",
-        domain="Listings",
-        tier="Enterprise",
-        access="Private",
-        price_monthly=5000.0,
-        features=[
-            "No-Copy access using snowflake",
-            "Bulk exports using shared snowflake schema",
-            "Best for external data delivery and resellers",
-            "Dedicated support / SLA (demo placeholder)",
-        ],
-        tags=["Bulk Export", "snowflake", "Enterprise"],
-        endpoints=[
-            {"name": "Access listings in Snowflake", "method": "Shared Snowflake Schema", "path": f"https://app.snowflake.com/lpgjexw/qu57033/#/data/shared/listing/private/GZT1ZHLC55?originTab=shared"},
         ],
     ),
 ]
