@@ -1006,9 +1006,8 @@ st.markdown("""<div class="journey-bar">
 </div>""", unsafe_allow_html=True)
 
 # ─── Tabs ─────────────────────────────────────────────────────────────────────
-t_market, t_products, t_demo, t_dev, t_biz, t_provider, t_docs = st.tabs([
+t_market, t_demo, t_dev, t_biz, t_provider, t_docs = st.tabs([
     "🏪 Marketplace",
-    "📦 All Products",
     "🏠 Listings Demo",
     "🛠️ Developer Tools",
     "📊 Business View",
@@ -1020,29 +1019,6 @@ t_market, t_products, t_demo, t_dev, t_biz, t_provider, t_docs = st.tabs([
 # TAB 1 — MARKETPLACE LANDING
 # ══════════════════════════════════════════════════════════════════════════════
 with t_market:
-
-    # Product Type tiles
-    st.subheader("Browse by Product Type")
-    cnt_by_type = {}
-    for p in CATALOG: cnt_by_type[p.product_type] = cnt_by_type.get(p.product_type,0)+1
-
-    active_pt = st.session_state.pt_filter
-    pt_cols   = st.columns(len(PRODUCT_TYPES))
-    for i, pt in enumerate(PRODUCT_TYPES):
-        with pt_cols[i]:
-            is_on  = active_pt == pt["type"]
-            border = "2px solid #0e3059" if is_on else "1.5px solid transparent"
-            st.markdown(
-                f'<div class="{pt["css"]} pt-card" style="border:{border}">'
-                f'<div class="pt-icon">{pt["icon"]}</div>'
-                f'<div class="pt-name">{pt["name"]}</div>'
-                f'<div class="pt-count">{cnt_by_type.get(pt["type"],0)} products</div>'
-                f'<div class="pt-desc">{pt["desc"]}</div></div>',
-                unsafe_allow_html=True)
-            label = "✓ Active" if is_on else "Filter"
-            if st.button(label, key=f"pt_{pt['type']}", use_container_width=True):
-                st.session_state.pt_filter = None if is_on else pt["type"]
-                st.rerun()
 
     # Domain tiles
     st.subheader("Browse by Domain")
@@ -1068,34 +1044,46 @@ with t_market:
                 st.session_state.dom_filter = None if is_on else dom["name"]
                 st.rerun()
 
-    # Featured products
-    featured_ids = [
-        "api-list-free",      # Listings REST — Free tier (entry point)
-        "sf-list",            # Listings Snowflake no-copy (flagship)
-        "stream-list",        # Listings Kafka stream
-        "analytics-market",   # Market Trends Dashboard
-        "analytics-cj",       # Consumer Behavior Dashboard
-        "report-list",        # Listing Price Index (Tableau)
-        "api-market-forecast", # ML forecast API
-        "analytics-agent",    # Agent leaderboard
-        "sf-txn",             # Closed Deals Snowflake share
-        "stream-ads",         # Ad Impression Kinesis
-        "dataset-list",       # Master Listing Dataset
-        "api-leads",          # Leads Engine API
-    ]
-    featured = [p for p in CATALOG if p.id in featured_ids]
-    dom_lbl  = f" · {active_dom}" if active_dom else ""
-    pt_lbl   = f" · {active_pt.capitalize()}" if active_pt else ""
-    st.subheader(f"Featured Products{dom_lbl}{pt_lbl}")
-    render_grid(featured)
+    # Product Type tiles
+    st.subheader("Browse by Product Type")
+    cnt_by_type = {}
+    for p in CATALOG: cnt_by_type[p.product_type] = cnt_by_type.get(p.product_type,0)+1
 
-# ══════════════════════════════════════════════════════════════════════════════
-# TAB 2 — ALL PRODUCTS
-# ══════════════════════════════════════════════════════════════════════════════
-with t_products:
-    st.subheader("All Data Products")
-    st.caption("Use the sidebar filters to narrow by domain, type, tier, or access level.")
-    render_grid(CATALOG)
+    active_pt = st.session_state.pt_filter
+    pt_cols   = st.columns(len(PRODUCT_TYPES))
+    for i, pt in enumerate(PRODUCT_TYPES):
+        with pt_cols[i]:
+            is_on  = active_pt == pt["type"]
+            border = "2px solid #0e3059" if is_on else "1.5px solid transparent"
+            st.markdown(
+                f'<div class="{pt["css"]} pt-card" style="border:{border}">'
+                f'<div class="pt-icon">{pt["icon"]}</div>'
+                f'<div class="pt-name">{pt["name"]}</div>'
+                f'<div class="pt-count">{cnt_by_type.get(pt["type"],0)} products</div>'
+                f'<div class="pt-desc">{pt["desc"]}</div></div>',
+                unsafe_allow_html=True)
+            label = "✓ Active" if is_on else "Filter"
+            if st.button(label, key=f"pt_{pt['type']}", use_container_width=True):
+                st.session_state.pt_filter = None if is_on else pt["type"]
+                st.rerun()
+
+    # Product grid — full catalog when a filter is active, curated 12 when unfiltered
+    _featured_ids = {
+        "api-list-free", "sf-list", "stream-list", "analytics-market",
+        "analytics-cj",  "report-list", "api-market-forecast", "analytics-agent",
+        "sf-txn",        "stream-ads",  "dataset-list",        "api-leads",
+    }
+    _filter_active = bool(active_dom or active_pt)
+    grid_products  = CATALOG if _filter_active else [p for p in CATALOG if p.id in _featured_ids]
+
+    dom_lbl = f" · {active_dom}" if active_dom else ""
+    pt_lbl  = f" · {active_pt.upper()}" if active_pt else ""
+    heading = f"{'All' if _filter_active else 'Featured'} Products{dom_lbl}{pt_lbl}"
+    st.subheader(heading)
+    if not _filter_active:
+        st.caption("Showing 12 featured products. Click a domain or product-type tile above to browse all.")
+    render_grid(grid_products)
+
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 3 — LISTINGS DEMO
