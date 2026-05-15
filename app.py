@@ -44,19 +44,43 @@ h1,h2,h3{letter-spacing:-.015em}
 
 /* ─ Product-type grid ────────────────────────────────────── */
 .pt-grid{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0}
-.pt-card{flex:1;min-width:120px;border-radius:12px;padding:15px 12px;text-align:center;
-  border:1.5px solid transparent;cursor:pointer;transition:box-shadow .15s}
+.pt-card{flex:1;min-width:120px;height:148px;border-radius:12px;padding:14px 12px;
+  text-align:center;border:1.5px solid transparent;cursor:pointer;
+  transition:box-shadow .15s;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
 .pt-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.10)}
-.pt-icon{font-size:1.7rem;margin-bottom:6px}
-.pt-name{font-weight:750;font-size:.88rem;margin-bottom:3px}
-.pt-count{font-size:.74rem;font-weight:600;margin-bottom:3px}
-.pt-desc{font-size:.73rem;color:rgba(49,51,63,.6);line-height:1.2rem}
+.pt-icon{font-size:1.7rem;margin-bottom:5px;flex-shrink:0}
+.pt-name{font-weight:750;font-size:.88rem;margin-bottom:2px;flex-shrink:0}
+.pt-count{font-size:.74rem;font-weight:600;margin-bottom:3px;flex-shrink:0}
+.pt-desc{font-size:.72rem;color:rgba(49,51,63,.6);line-height:1.2rem;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .pt-api    {background:rgba(21,101,192,.06);border-color:rgba(21,101,192,.22)}
 .pt-analytics{background:rgba(26,122,68,.06);border-color:rgba(26,122,68,.22)}
 .pt-stream {background:rgba(106,27,154,.06);border-color:rgba(106,27,154,.22)}
 .pt-dataset{background:rgba(69,39,160,.06);border-color:rgba(69,39,160,.22)}
 .pt-report {background:rgba(230,81,0,.06);border-color:rgba(230,81,0,.22)}
 .pt-sf     {background:rgba(2,119,189,.06);border-color:rgba(2,119,189,.28)}
+
+/* ─ Journey banner ───────────────────────────────────────── */
+.journey-bar{display:flex;align-items:center;justify-content:center;gap:0;
+  background:linear-gradient(90deg,rgba(14,48,89,.04),rgba(21,84,160,.07),rgba(14,48,89,.04));
+  border:1px solid rgba(14,48,89,.12);border-radius:10px;padding:10px 20px;
+  margin:6px 0 2px;flex-wrap:wrap}
+.jstep{display:flex;align-items:center;gap:6px;padding:4px 14px}
+.jstep-icon{font-size:1.1rem}
+.jstep-label{font-weight:750;font-size:.85rem;color:#0e3059}
+.jstep-sub{font-size:.72rem;color:rgba(49,51,63,.55);margin-top:1px}
+.jarrow{font-size:1.1rem;color:rgba(14,48,89,.3);padding:0 2px}
+
+/* ─ Live / Illustrative badge ────────────────────────────── */
+.b-live{background:rgba(39,174,96,.12);border-color:rgba(39,174,96,.4);
+  color:#1a7a44;font-weight:800}
+.b-illustrative{background:rgba(243,156,18,.1);border-color:rgba(243,156,18,.35);
+  color:#b7770d;font-weight:700}
+
+/* ─ Card consumer row ────────────────────────────────────── */
+.card-consumer{font-size:.73rem;color:rgba(49,51,63,.55);margin-top:3px;
+  border-top:1px solid rgba(49,51,63,.07);padding-top:5px;margin-top:6px}
 
 /* ─ How it works ─────────────────────────────────────────── */
 .hiw-grid{display:flex;gap:14px;margin:4px 0}
@@ -69,22 +93,33 @@ h1,h2,h3{letter-spacing:-.015em}
 .hiw-desc{font-size:.8rem;color:rgba(49,51,63,.65);line-height:1.3rem}
 
 /* ─ Domain tiles ─────────────────────────────────────────── */
-.dom-tile{border-radius:11px;padding:14px 10px;text-align:center;
-  box-shadow:0 1px 5px rgba(0,0,0,.04);height:100%}
-.dt-icon{font-size:1.55rem;margin-bottom:5px}
-.dt-name{font-weight:750;font-size:.88rem;margin-bottom:2px}
-.dt-desc{font-size:.73rem;color:rgba(49,51,63,.58);line-height:1.18rem}
+.dom-tile{border-radius:13px;padding:16px 10px 14px;text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);height:130px;
+  transition:box-shadow .18s,transform .12s;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.dom-tile:hover{box-shadow:0 6px 20px rgba(14,48,89,.14);transform:translateY(-2px)}
+.dt-icon{font-size:1.9rem;margin-bottom:6px;flex-shrink:0}
+.dt-name{font-weight:800;font-size:.95rem;margin-bottom:2px;color:#0e3059;flex-shrink:0}
+.dt-count{font-size:.71rem;font-weight:700;color:rgba(21,84,160,.75);margin-bottom:2px;flex-shrink:0}
+.dt-desc{font-size:.71rem;color:rgba(49,51,63,.58);line-height:1.15rem;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 /* ─ Product cards ────────────────────────────────────────── */
 .mkt-card{border:1px solid rgba(49,51,63,.12);border-radius:13px;
   padding:14px 14px 12px;
   background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.93) 100%);
-  box-shadow:0 1px 7px rgba(0,0,0,.05);height:100%}
-.mkt-title{font-weight:750;font-size:.96rem;margin-bottom:4px}
-.mkt-desc{color:rgba(49,51,63,.72);font-size:.85rem;line-height:1.22rem;margin-bottom:7px}
-.mkt-meta{margin:4px 0 6px}
-.price{font-weight:850;font-size:1rem;margin-top:5px}
-.small{font-size:.77rem;color:rgba(49,51,63,.66)}
+  box-shadow:0 1px 7px rgba(0,0,0,.05);
+  height:240px;
+  display:flex;flex-direction:column}
+.mkt-title{font-weight:750;font-size:.93rem;margin-bottom:4px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0}
+.mkt-meta{margin:3px 0 5px;flex-shrink:0}
+.mkt-desc{color:rgba(49,51,63,.72);font-size:.82rem;line-height:1.2rem;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  flex-shrink:0}
+.mkt-spacer{flex:1}
+.price{font-weight:850;font-size:.97rem;margin-top:4px;flex-shrink:0}
+.small{font-size:.75rem;color:rgba(49,51,63,.66)}
 
 /* ─ Access path cards ────────────────────────────────────── */
 .ap-grid{display:flex;gap:14px;margin:4px 0}
@@ -207,7 +242,9 @@ class Product:
     snowflake_share: Optional[str] = None
     snowflake_view:  Optional[str] = None
     is_demo: bool = False   # highlighted in the Listings Demo tab
+    live: bool = False      # True = actually deployed and callable; False = illustrative capability
     provider: str = "Brillio / MOVE"
+    consumers: str = "Open market"  # who this is for, shown on card
 
 # ─── Static content ───────────────────────────────────────────────────────────
 PRODUCT_TYPES = [
@@ -280,7 +317,7 @@ CATALOG: List[Product] = [
     ["1,000 calls/month","Active listings only","Filters: status, limit","Community support"],
     ["REST","Free","Starter"],
     endpoints=[{"name":"List listings","method":"GET","path":f"{_P}/listings"}],
-    is_demo=True),
+    is_demo=True, live=True, consumers="Agents, PropTech, Public"),
 
   Product("api-list-std", "Listings API — Standard",
     "Standard listing access with detail endpoint — for agent portals and CRM integrations.",
@@ -290,7 +327,7 @@ CATALOG: List[Product] = [
     endpoints=[
       {"name":"List listings","method":"GET","path":f"{_P}/listings"},
       {"name":"Listing detail","method":"GET","path":f"{_P}/listings/{{listing_id}}"},
-    ], is_demo=True),
+    ], is_demo=True, live=True, consumers="CRM platforms, Agent portals"),
 
   Product("api-list-ent", "Listings API — Enterprise",
     "Full REST access including bulk CSV export to S3. For large-scale pipelines.",
@@ -301,7 +338,7 @@ CATALOG: List[Product] = [
       {"name":"List listings","method":"GET","path":f"{_P}/listings"},
       {"name":"Listing detail","method":"GET","path":f"{_P}/listings/{{listing_id}}"},
       {"name":"Export to S3","method":"GET","path":f"{_P}/listings/export"},
-    ], is_demo=True),
+    ], is_demo=True, live=True, consumers="Enterprise data teams, REITs"),
 
   # Snowflake Native ───────────────────────────────────────────────────────
   Product("sf-list", "MOVE Listings — Active Inventory Share",
@@ -311,7 +348,8 @@ CATALOG: List[Product] = [
      "Live data — no ETL, no scheduled refresh","Natively governed by Snowflake"],
     ["No-Copy","Active","Secure View"],
     snowflake_share="BRILLIO_MOVE_LISTINGS_V1",
-    snowflake_view="MOVE_DB.LISTINGS.ACTIVE_LISTINGS_VW", is_demo=True),
+    snowflake_view="MOVE_DB.LISTINGS.ACTIVE_LISTINGS_VW",
+    is_demo=True, live=True, consumers="Snowflake customers, Analytics teams"),
 
   Product("sf-list-hist", "MOVE Listings — Historical Archive Share",
     "Five-year historical listing archive accessible as a Snowflake secure view. Zero copy.",
@@ -820,21 +858,34 @@ def need_requests():
     if requests is None:
         st.error("pip install requests"); st.stop()
 
+_TIER_BIZ = {"Free": "Evaluation", "Paid": "Production Integration",
+             "Enterprise": "Data Monetization"}
+
 def product_card_html(p: Product) -> str:
-    price  = money(p.price_monthly)
-    period = " / month" if (p.price_monthly and p.price_monthly > 0) else ""
-    tags   = "".join([f'<span class="badge">{t}</span>' for t in p.tags[:4]])
+    price   = money(p.price_monthly)
+    period  = " / month" if (p.price_monthly and p.price_monthly > 0) else ""
+    tags    = "".join([f'<span class="badge">{t}</span>' for t in p.tags[:3]])
+    status_badge = (
+        '<span class="badge b-live">✅ Live</span>'
+        if p.live else
+        '<span class="badge b-illustrative">🟡 Illustrative</span>'
+    )
+    tier_biz = _TIER_BIZ.get(p.tier, p.tier)
     return f"""<div class="mkt-card">
-  <div class="mkt-title">{picon(p.product_type)} {p.name}</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+    <div class="mkt-title">{picon(p.product_type)} {p.name}</div>
+    {status_badge}
+  </div>
   <div class="mkt-meta">
     <span class="badge {bc_type(p.product_type)}">{p.product_type.upper()}</span>
-    <span class="badge">{p.delivery_tech}</span>
     <span class="badge {bc_acc(p.access)}">{p.access}</span>
-    <span class="badge {bc_tier(p.tier)}">{p.tier}</span>
+    <span class="badge {bc_tier(p.tier)}">{p.tier} · {tier_biz}</span>
   </div>
   <div class="mkt-desc">{p.description}</div>
+  <div class="mkt-spacer"></div>
   <div class="price">{price}<span class="small">{period}</span></div>
-  <div style="margin-top:7px">{tags}</div>
+  <div style="margin-top:5px">{tags}</div>
+  <div class="card-consumer">Provider: {p.provider} · For: {p.consumers}{' · <span style="color:#01579b">❄️ Snowflake channel</span>' if p.product_type == "snowflake" else ''}</div>
 </div>"""
 
 # ─── Sidebar ──────────────────────────────────────────────────────────────────
@@ -931,14 +982,27 @@ n_types    = len(PRODUCT_TYPES)
 st.markdown(f"""<div class="hero">
   <div class="hero-ey">MOVE · Data as a Product</div>
   <div class="hero-t">Data Product Marketplace</div>
-  <div class="hero-s">Discover, subscribe, and integrate real estate data products —
-    APIs, analytics, event streams, datasets, BI reports, and Snowflake native shares.</div>
+  <div class="hero-s">Monetize, share, and consume real estate data products across ecosystems —
+    REST APIs, analytics dashboards, event streams, bulk datasets, BI reports, and Snowflake native shares.</div>
   <div class="hero-stats">
     <div><div class="hv">{n_products}</div><div class="hl">Data Products</div></div>
     <div><div class="hv">{n_domains}</div><div class="hl">Domains</div></div>
     <div><div class="hv">{n_types}</div><div class="hl">Product Types</div></div>
     <div><div class="hv">2</div><div class="hl">Delivery Mechanisms</div></div>
   </div>
+</div>""", unsafe_allow_html=True)
+
+# ─── Journey banner ───────────────────────────────────────────────────────────
+st.markdown("""<div class="journey-bar">
+  <div class="jstep"><div class="jstep-icon">🔍</div><div><div class="jstep-label">Discover</div><div class="jstep-sub">Browse 60+ products</div></div></div>
+  <div class="jarrow">→</div>
+  <div class="jstep"><div class="jstep-icon">📋</div><div><div class="jstep-label">Subscribe</div><div class="jstep-sub">Choose tier &amp; access</div></div></div>
+  <div class="jarrow">→</div>
+  <div class="jstep"><div class="jstep-icon">🔑</div><div><div class="jstep-label">Access</div><div class="jstep-sub">Token or Snowflake share</div></div></div>
+  <div class="jarrow">→</div>
+  <div class="jstep"><div class="jstep-icon">📊</div><div><div class="jstep-label">Analyze</div><div class="jstep-sub">REST · Dashboard · SQL</div></div></div>
+  <div class="jarrow">→</div>
+  <div class="jstep"><div class="jstep-icon">💰</div><div><div class="jstep-label">Monetize</div><div class="jstep-sub">Revenue · Partner · Scale</div></div></div>
 </div>""", unsafe_allow_html=True)
 
 # ─── Tabs ─────────────────────────────────────────────────────────────────────
@@ -982,53 +1046,48 @@ with t_market:
 
     # Domain tiles
     st.subheader("Browse by Domain")
-    active_dom = st.session_state.dom_filter
-    dom_cols   = st.columns(len(DOMAINS))
+    active_dom  = st.session_state.dom_filter
+    cnt_by_dom  = {}
+    for p in CATALOG: cnt_by_dom[p.domain] = cnt_by_dom.get(p.domain, 0) + 1
+    dom_cols    = st.columns(len(DOMAINS))
     for i, dom in enumerate(DOMAINS):
         with dom_cols[i]:
             is_on  = active_dom == dom["name"]
             border = "2px solid #0e3059" if is_on else "1px solid rgba(49,51,63,.12)"
-            bg     = "rgba(14,48,89,.07)" if is_on else "linear-gradient(145deg,#fff,#f5f7fb)"
+            bg     = "rgba(14,48,89,.08)" if is_on else "linear-gradient(145deg,#fff,#f4f6fb)"
+            n_dom  = cnt_by_dom.get(dom["name"], 0)
             st.markdown(
                 f'<div class="dom-tile" style="border:{border};background:{bg}">'
                 f'<div class="dt-icon">{dom["icon"]}</div>'
                 f'<div class="dt-name">{dom["name"]}</div>'
+                f'<div class="dt-count">{n_dom} products</div>'
                 f'<div class="dt-desc">{dom["desc"]}</div></div>',
                 unsafe_allow_html=True)
-            label = "✓ Active" if is_on else "Filter"
+            label = "✓ Active" if is_on else "Explore"
             if st.button(label, key=f"dom_{dom['name']}", use_container_width=True):
                 st.session_state.dom_filter = None if is_on else dom["name"]
                 st.rerun()
 
-    # Internal / External
-    st.markdown("<div style='height:4px'></div>", unsafe_allow_html=True)
-    mkt_view   = st.radio("Marketplace View",
-        ["🏢 Internal Marketplace","🌐 External (Snowflake Marketplace)"],
-        horizontal=True)
-    is_ext = "External" in mkt_view
-    st.caption("Public products only — Snowflake Marketplace view." if is_ext
-               else "All products — internal view for authenticated MOVE teams.")
-
     # Featured products
     featured_ids = [
-        "api-list-free",     # Listings REST — Free tier (entry point)
-        "sf-list",           # Listings Snowflake no-copy (flagship)
-        "stream-list",       # Listings Kafka stream
-        "analytics-market",  # Market Trends Dashboard
-        "analytics-cj",      # Consumer Behavior Dashboard
-        "report-list",       # Listing Price Index (Tableau)
-        "api-market-forecast",# ML forecast API
-        "analytics-agent",   # Agent leaderboard
-        "sf-txn",            # Closed Deals Snowflake share
-        "stream-ads",        # Ad Impression Kinesis
-        "dataset-list",      # Master Listing Dataset
-        "api-leads",         # Leads Engine API
+        "api-list-free",      # Listings REST — Free tier (entry point)
+        "sf-list",            # Listings Snowflake no-copy (flagship)
+        "stream-list",        # Listings Kafka stream
+        "analytics-market",   # Market Trends Dashboard
+        "analytics-cj",       # Consumer Behavior Dashboard
+        "report-list",        # Listing Price Index (Tableau)
+        "api-market-forecast", # ML forecast API
+        "analytics-agent",    # Agent leaderboard
+        "sf-txn",             # Closed Deals Snowflake share
+        "stream-ads",         # Ad Impression Kinesis
+        "dataset-list",       # Master Listing Dataset
+        "api-leads",          # Leads Engine API
     ]
-    featured     = [p for p in CATALOG if p.id in featured_ids]
-    dom_lbl = f" · {active_dom}" if active_dom else ""
-    pt_lbl  = f" · {active_pt.capitalize()}" if active_pt else ""
+    featured = [p for p in CATALOG if p.id in featured_ids]
+    dom_lbl  = f" · {active_dom}" if active_dom else ""
+    pt_lbl   = f" · {active_pt.capitalize()}" if active_pt else ""
     st.subheader(f"Featured Products{dom_lbl}{pt_lbl}")
-    render_grid(featured, is_ext)
+    render_grid(featured)
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 2 — ALL PRODUCTS
