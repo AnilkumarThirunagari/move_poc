@@ -315,7 +315,7 @@ CATALOG: List[Product] = [
     "Free-tier access to active listings. Ideal for evaluation and quick prototypes.",
     "Listings","api","REST/HTTP","Free","Public",0.0,
     ["1,000 calls/month","Active listings only","Filters: status, limit","Community support"],
-    ["REST","Free","Starter"],
+    ["REST","Free","Starter","Quality"],
     endpoints=[{"name":"List listings","method":"GET","path":f"{_P}/listings"}],
     is_demo=True, live=True, consumers="Agents, PropTech, Public"),
 
