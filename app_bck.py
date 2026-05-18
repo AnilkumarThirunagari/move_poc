@@ -144,7 +144,7 @@ CATALOG: List[Product] = [
             "Basic filters: status, limit",
             "Community support",
         ],
-        tags=["Listings", "Starter", "REST"],
+        tags=["Listings", "Starter", "REST", "Quality"],
         endpoints=[
             {"name": "List listings", "method": "GET", "path": f"{API_VERSION_PREFIX}/listings"},
         ],
