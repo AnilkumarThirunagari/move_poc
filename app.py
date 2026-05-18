@@ -1232,7 +1232,6 @@ with t_demo:
                     payload = data.get("data")
                     if isinstance(payload,list):
                         trimmed = rbac(payload, st.session_state.auth.get("role"))
-                        //st.dataframe(pd.DataFrame(trimmed),use_container_width=True) if pd else st.json(trimmed)
                         
                         if pd is not None:
                             df = pd.DataFrame(trimmed)
@@ -1244,7 +1243,6 @@ with t_demo:
                     elif isinstance(payload,dict):
                         if "LISTING_ID" in payload:
                             t2 = rbac([payload], st.session_state.auth.get("role"))
-                            //st.json(t2[0] if t2 else payload)      
                             result = t2[0] if t2 else payload
                             st.json(result)
                         else:
